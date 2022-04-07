@@ -11,6 +11,11 @@ jobs:
       with:
         host: ${{ secrets.SONARQUBE_HOST }}
         login: ${{ secrets.SONARQUBE_TOKEN }}
+    - name: SonarQube Quality Gate check
+      uses: sonarsource/sonarqube-quality-gate-action@master
+      timeout-minutes: 5
+      env:
+       SONAR_TOKEN: ${{  secrets.SONARQUBE_TOKEN }}
     - name: success
       run: echo '代码质量检查完成'
   gitGuardian:
