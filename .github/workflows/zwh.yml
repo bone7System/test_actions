@@ -1,7 +1,8 @@
-name: test CI
-on: [push]
+on: push
+name: Main Workflow
 jobs:
-  sonarQube:
+  sonarQubeTrigger:
+    name: SonarQube Trigger
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -10,5 +11,3 @@ jobs:
       with:
         host: ${{ secrets.SONARQUBE_HOST }}
         login: ${{ secrets.SONARQUBE_TOKEN }}
-    - name: Build with Maven
-      run: echo '检查完成'
