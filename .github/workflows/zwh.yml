@@ -5,7 +5,13 @@ jobs:
   buildf:
     runs-on: ubuntu-latest
     steps: 
+    - id: mya
     - uses: bone7System/javascript-action@main
       with: 
        milliseconds: 2000
+      run: |
+       echo ${{ mya.outputs.time }}
+       echo '完成。。。。。。。。。。。'
+       
+     
     
