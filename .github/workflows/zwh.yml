@@ -1,9 +1,11 @@
 name: Node.js CI
 on: [push]
 jobs:
-  build:
+  
+  buildf:
     runs-on: ubuntu-latest
-    steps:
-    - uses: bone7System/hello-world-javascript-action@main
+    steps: 
+    - uses: actions/javascript-action@v1
       with: 
-       who-to-greet: 'Mona the Octocat'
+       milliseconds: 1000
+    
