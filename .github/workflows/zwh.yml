@@ -6,11 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
     - id: mya
-    - uses: bone7System/javascript-action@main
+      uses: bone7System/javascript-action@main
       with: 
        milliseconds: 2000
+    - name: Pass or fail 
       run: |
-       echo ${{ mya.outputs.time }}
+       echo ${{ steps.mya.outputs.time }}
        echo '完成。。。。。。。。。。。'
        
      
