@@ -5,7 +5,7 @@ jobs:
   buildf:
     runs-on: ubuntu-latest
     steps: 
-    - uses: bone7System/javascript-action@v1
+    - uses: bone7System/javascript-action@main
       with: 
        milliseconds: 1000
     
