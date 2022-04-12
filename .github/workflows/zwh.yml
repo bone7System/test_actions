@@ -1,50 +1,25 @@
-name: CI
-on: [push]
+name: 'Merge branch'
+on:
+  push
+
 jobs:
-  
-  build:
+  merge:
     runs-on: ubuntu-latest
-    steps: 
-#     - id: mya
-#       uses: bone7System/javascript-action@main
-#       with: 
-#        milliseconds: 2000
-#     - name: Pass or fail 
-#       run: |
-#        echo ${{ steps.mya.outputs.time }}
-#        echo '完成。。。。。。。。。。。'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+          ref: 'master'
 
-
-#       - name: Dump GitHub context
-#         run: |
-#       - name: Dump GitHub context
-#         id: github_context_step
-#         run: echo '${{ toJSON(github) }}'
-#       - name: Dump job context
-#         run: echo '${{ toJSON(job) }}'
-#       - name: Dump steps context
-#         run: echo '${{ toJSON(steps) }}'
-#       - name: Dump runner context
-#         run: echo '${{ toJSON(runner) }}'
-#       - name: Dump strategy context
-#         run: echo '${{ toJSON(strategy) }}'
-#       - name: Dump matrix context
-#         run: echo '${{ toJSON(matrix) }}'
-
-     - uses: actions/checkout@v1
-     - name: Extract branch name
-       shell: bash
-       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-       id: extract_branch
-     - name: Git merge operation
-       uses: alexrogalskiy/github-action-git-operation@master
-       env:
-         GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-       with:
-         mode: merge-fast-forward
-         sourceBranch: main
-         targetBranch: merge-test
-         
+      - name: Git merge operation
+        uses: alexrogalskiy/github-action-git-operation@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          mode: 'merge-fast-forward'
+          sourceBranch: 'feature'
+          targetBranch: 'master'         
 
 
 
