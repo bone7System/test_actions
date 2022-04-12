@@ -36,11 +36,13 @@ jobs:
        shell: bash
        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
        id: extract_branch
-     - name: Extract tag name
-       shell: bash
-       run: |
-          branch=$(echo ${GITHUB_REF#refs/heads/})
-          echo ${branch}
+     - uses: yanamura/git-flow-merge-action@v1
+       with: 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${GITHUB_REF#refs/heads/}
+          develop_branch: 'merge-test'
+ 
+      
 
 
 
