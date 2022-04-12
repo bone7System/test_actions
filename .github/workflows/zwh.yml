@@ -1,4 +1,4 @@
-name: Node.js CI
+name: CI
 on: [push]
 jobs:
   
@@ -39,11 +39,11 @@ jobs:
      - name: Git merge operation
        uses: alexrogalskiy/github-action-git-operation@master
        env:
-        GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+         GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
        with:
-        mode: 'merge-fast-forward'
-        sourceBranch: 'main'
-        targetBranch: 'merge-test'
+         mode: merge-fast-forward
+         sourceBranch: main
+         targetBranch: merge-test
 
 
 
