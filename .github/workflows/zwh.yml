@@ -39,8 +39,8 @@ jobs:
      - name: Extract tag name
        shell: bash
        run: |
-          branch=${{ steps.extract_branch.outputs.branch }}
-          echo "##[set-output name=tag;]$(echo ${branch#release/})"
+          branch=$(echo ${GITHUB_REF#refs/heads/})
+
 
 
      
