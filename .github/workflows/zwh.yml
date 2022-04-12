@@ -6,17 +6,16 @@ jobs:
   merge:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@master
 
-      - name: Git merge operation
-        uses: alexrogalskiy/github-action-git-operation@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+      - name: Merge main -> merge-test
+        uses: devmasx/merge-branch@master
         with:
-          mode: 'merge-fast-forward'
-          sourceBranch: 'main'
-          targetBranch: 'merge-test'         
+          type: now
+          from_branch: main
+          target_branch: merge-test
+          github_token: ${{ github.MY_GITHUB_TOKEN }}
+       
 
 
 
