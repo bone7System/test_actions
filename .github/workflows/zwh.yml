@@ -18,8 +18,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           mode: 'merge-fast-forward'
-          sourceBranch: 'feature'
-          targetBranch: 'master'         
+          sourceBranch: 'main'
+          targetBranch: 'merge-test'         
 
 
 
