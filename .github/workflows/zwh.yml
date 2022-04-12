@@ -40,7 +40,7 @@ jobs:
        shell: bash
        run: |
           branch=$(echo ${GITHUB_REF#refs/heads/})
-          echo branch
+          echo ${branch}
 
 
 
