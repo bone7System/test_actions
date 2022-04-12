@@ -14,7 +14,7 @@ jobs:
           type: now
           from_branch: main
           target_branch: merge-test
-          github_token: ${{ github.MY_GITHUB_TOKEN }}
+          github_token: ${{ github.token }}
        
 
 
