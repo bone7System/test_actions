@@ -39,7 +39,7 @@ jobs:
      - uses: yanamura/git-flow-merge-action@v1
        with: 
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${GITHUB_REF#refs/heads/}
+          branch: 'main'
           develop_branch: 'merge-test'
           main_branch: ''
       
