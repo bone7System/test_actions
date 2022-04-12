@@ -36,13 +36,14 @@ jobs:
        shell: bash
        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
        id: extract_branch
-     - uses: yanamura/git-flow-merge-action@v1
-       with: 
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: 'main'
-          develop_branch: 'merge-test'
-          main_branch: ''
-      
+     - name: Git merge operation
+       uses: alexrogalskiy/github-action-git-operation@master
+       env:
+        GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+       with:
+        mode: 'merge-fast-forward'
+        sourceBranch: 'main'
+        targetBranch: 'merge-test'
 
 
 
