@@ -1,48 +1,21 @@
-name: Node.js CI
-on: [push]
+name: 'Merge branch'
+on:
+  push
+
 jobs:
-  
-  build:
+  merge:
     runs-on: ubuntu-latest
-    steps: 
-#     - id: mya
-#       uses: bone7System/javascript-action@main
-#       with: 
-#        milliseconds: 2000
-#     - name: Pass or fail 
-#       run: |
-#        echo ${{ steps.mya.outputs.time }}
-#        echo '完成。。。。。。。。。。。'
+    steps:
+      - uses: actions/checkout@master
 
-
-#       - name: Dump GitHub context
-#         run: |
-#       - name: Dump GitHub context
-#         id: github_context_step
-#         run: echo '${{ toJSON(github) }}'
-#       - name: Dump job context
-#         run: echo '${{ toJSON(job) }}'
-#       - name: Dump steps context
-#         run: echo '${{ toJSON(steps) }}'
-#       - name: Dump runner context
-#         run: echo '${{ toJSON(runner) }}'
-#       - name: Dump strategy context
-#         run: echo '${{ toJSON(strategy) }}'
-#       - name: Dump matrix context
-#         run: echo '${{ toJSON(matrix) }}'
-
-     - uses: actions/checkout@v1
-     - name: Extract branch name
-       shell: bash
-       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-       id: extract_branch
-     - uses: yanamura/git-flow-merge-action@v1
-       with: 
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: 'main'
-          develop_branch: 'merge-test'
-          main_branch: ''
-      
+      - name: Merge main -> merge-test
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: main
+          target_branch: merge-test
+          github_token: ${{ github.token }}
+       
 
 
 
