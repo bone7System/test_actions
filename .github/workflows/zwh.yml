@@ -2,7 +2,7 @@ name: Node.js CI
 on: [push]
 jobs:
   
-  buildf:
+  build:
     runs-on: ubuntu-latest
     steps: 
 #     - id: mya
@@ -13,23 +13,35 @@ jobs:
 #       run: |
 #        echo ${{ steps.mya.outputs.time }}
 #        echo '完成。。。。。。。。。。。'
-      - name: Dump GitHub context
-        run: |
-         git version
-         git log
-      - name: Dump GitHub context
-        id: github_context_step
-        run: echo '${{ toJSON(github) }}'
-      - name: Dump job context
-        run: echo '${{ toJSON(job) }}'
-      - name: Dump steps context
-        run: echo '${{ toJSON(steps) }}'
-      - name: Dump runner context
-        run: echo '${{ toJSON(runner) }}'
-      - name: Dump strategy context
-        run: echo '${{ toJSON(strategy) }}'
-      - name: Dump matrix context
-        run: echo '${{ toJSON(matrix) }}'
+
+
+#       - name: Dump GitHub context
+#         run: |
+#       - name: Dump GitHub context
+#         id: github_context_step
+#         run: echo '${{ toJSON(github) }}'
+#       - name: Dump job context
+#         run: echo '${{ toJSON(job) }}'
+#       - name: Dump steps context
+#         run: echo '${{ toJSON(steps) }}'
+#       - name: Dump runner context
+#         run: echo '${{ toJSON(runner) }}'
+#       - name: Dump strategy context
+#         run: echo '${{ toJSON(strategy) }}'
+#       - name: Dump matrix context
+#         run: echo '${{ toJSON(matrix) }}'
+
+     - uses: actions/checkout@v1
+     - name: Extract branch name
+       shell: bash
+       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+       id: extract_branch
+     - name: Extract tag name
+       shell: bash
+       run: |
+          branch=${{ steps.extract_branch.outputs.branch }}
+          echo "##[set-output name=tag;]$(echo ${branch#release/})"
+
 
      
     
