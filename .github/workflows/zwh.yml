@@ -13,7 +13,7 @@ jobs:
       run: |
        echo ${{ steps.mya.outputs.time }}
        echo '完成。。。。。。。。。。。'
-       exit 1
+       git log
        
      
     
