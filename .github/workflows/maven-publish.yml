@@ -1,34 +1,33 @@
-# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
-# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
-
-name: Maven Package
-
-on:
-  release:
-    types: [created]
-
+on: push
+name: Main Workflow
 jobs:
-  build:
-
+  sonarQube:
+    name: SonarQube Trigger
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 11
-      uses: actions/setup-java@v3
+    - uses: actions/checkout@master
+    - name: SonarQube Scan
+      uses: kitabisa/sonarqube-action@master
       with:
-        java-version: '11'
-        distribution: 'temurin'
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
-
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-
-    - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+        host: ${{ secrets.SONARQUBE_HOST }}
+        login: ${{ secrets.SONARQUBE_TOKEN }}
+    - name: success
+      run: echo '代码质量检查完成'
+  gitGuardian:
+   name: GitGuardian scan
+   runs-on: ubuntu-latest
+   steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0 # fetch all history so multiple commits can be scanned
+    - name: GitGuardian scan
+      uses: GitGuardian/ggshield-action@master
       env:
-        GITHUB_TOKEN: ${{ github.token }}
+        GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
+        GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}
+        GITHUB_PULL_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        GITHUB_DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
+    - name: success
+      run: echo '代码安全检查完成'
