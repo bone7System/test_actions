@@ -1,23 +1,21 @@
 on: push
 name: Main Workflow
 jobs:
-  sonarQube:
-    name: SonarQube
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
+  gitGuardian:
+   name: GitGuardian scan
+   runs-on: ubuntu-latest
+   steps:
+    - name: Checkout
+      uses: actions/checkout@v2
       with:
-        # Disabling shallow clone is recommended for improving relevancy of reporting
-        fetch-depth: 0
-    - name: SonarQube Scan
-      uses: SonarSource/sonarqube-scan-action@v1.1.0
+        fetch-depth: 0 # fetch all history so multiple commits can be scanned
+    - name: GitGuardian scan
+      uses: GitGuardian/ggshield-action@master
       env:
-        SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONARQUBE_HOST }}
-    - name: SonarQube Quality Gate check
-      uses: sonarsource/sonarqube-quality-gate-action@master
-      # Force to fail step after specific time
-      timeout-minutes: 5
-      env:
-       SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
- 
+        GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
+        GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}
+        GITHUB_PULL_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        GITHUB_DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
+    - name: success
+      run: echo '代码安全检查完成'
