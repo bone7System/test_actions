@@ -1,4 +1,5 @@
 public class TestJavaSonarQube {
+    String passWord="xiaowenwudalao";
     public static void main(String[] args) {
         int target = -5;
         int num = 3;
