@@ -1,0 +1,12 @@
+name: Slash Command Dispatch
+on:
+  issue_comment:
+    types: ["created"]
+  pull_request_review_comment:
+    types: ["created"]
+jobs:
+  slashCommandDispatch:
+    runs-on: ubuntu-latest
+    run: |
+    echo "查看发送的comment"
+    echo "command is ${{ github.event.comment.body }}"
