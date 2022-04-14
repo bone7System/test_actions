@@ -6,7 +6,9 @@ on:
     types: ["created"]
 jobs:
   slashCommandDispatch:
-    runs-on: ubuntu-latest
-    run: |
-    echo "CR01---------------查看发送的comment"
-    echo "command is ${{ github.event.comment.body }}"
+    runs-on: ubuntu-latest 
+    steps: 
+    - name: 输出参数
+      run: |
+       echo "CR01---------------查看发送的comment"
+       echo "command is ${{ github.event.comment.body }}"
