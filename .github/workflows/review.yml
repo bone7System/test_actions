@@ -7,6 +7,8 @@ on:
 jobs:
   slashCommandDispatch:
     runs-on: ubuntu-latest
-    run: |
-    echo "查看发送的comment"
-    echo "command is ${{ github.event.comment.body }}"
+    steps: 
+    - name: '查看参数' 
+      run: |
+        echo "查看发送的comment"
+        echo "command is ${{ github.event.comment.body }}"
