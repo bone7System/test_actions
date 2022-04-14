@@ -1,18 +1,6 @@
 on: push
 name: Main Workflow
 jobs:
-  sonarQube:
-    name: SonarQube Trigger
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: SonarQube Scan
-      uses: kitabisa/sonarqube-action@master
-      with:
-        host: ${{ secrets.SONARQUBE_HOST }}
-        login: ${{ secrets.SONARQUBE_TOKEN }}
-    - name: success
-      run: echo '代码质量检查完成     '
   gitGuardian:
    name: GitGuardian scan
    runs-on: ubuntu-latest
