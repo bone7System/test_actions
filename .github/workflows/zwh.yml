@@ -1,3 +1,5 @@
+env:
+  project_type: test_actions
 name: Context testing
 on: push
 
@@ -10,7 +12,7 @@ jobs:
           echo  ${##*/${{ github.repository }} } '----项目-'
           echo $(basename ${{ github.repository }}) '----项目2-'
       - name: project name
-        if: ( startsWith($(basename ${{ github.repository }}),'test_actions') )
+        if: ( startsWith($(basename ${{ github.repository }}),${{ env.project_type }}) )
         run: |
           echo '发布test_ations'  
          
