@@ -13,7 +13,7 @@ jobs:
           echo $(basename ${{ github.repository }}) ${{ env.project_type }} '----项目2-'
       - name: project name
 #         if: ( startsWith($(basename ${{ github.repository }}),${{ env.project_type }}) )
-        if:  startsWith('Hello world', 'dddddddHe')
+        if: ( startsWith('Hello world', 'dddddddHe') )
         run: |
           echo '发布test_ations'  
          
