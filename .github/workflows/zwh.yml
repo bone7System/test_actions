@@ -13,7 +13,7 @@ jobs:
           echo $(basename ${{ github.repository }}) ${{ env.project_type }} '----项目2-'
           echo to=$(basename ${{ github.repository }}) >> $GITHUB_ENV
       - name: 判断怎么发布
-        if: ${{ env.to == 'bone7System/test_actions' }}
+        if: ${{ env.to == 'test_actions' }}
         run: 
           echo '发布test_ations' '|'  env.to '|' 
          
