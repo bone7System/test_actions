@@ -15,7 +15,7 @@ jobs:
       - name: 判断怎么发布
         if: ${{ env.to == 'test_actions' }}
         run: 
-          echo '发布test_ations' '|'  env.to '|' 
+          echo '发布test_ations' '|'  ${{ env.to }} '|' 
          
       - name: Dump GitHub context
         id: github_context_step
