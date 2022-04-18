@@ -8,6 +8,7 @@ jobs:
       - name: project name
         run: |
           echo  ${##*/${{ github.repository }} } '----项目-'
+          echo $(basename ${{ github.repository }}) '----项目2-'
       - name: Dump GitHub context
         id: github_context_step
         run: echo '${{ toJSON(github) }}'
