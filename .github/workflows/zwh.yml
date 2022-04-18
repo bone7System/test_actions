@@ -1,5 +1,4 @@
-env:
-  project_type: test_actions
+
 name: Context testing
 on: push
 
@@ -14,6 +13,8 @@ jobs:
           echo to=$(basename ${{ github.repository }}) >> $GITHUB_ENV
       - name: 判断怎么发布
         if: ${{ startsWith(env.to , env.project_type ) }}
+        env:
+          project_type: test_actions
         run: 
           echo '发布test_ations' '|'  ${{ env.to }} '|' 
          
