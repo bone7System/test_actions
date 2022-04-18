@@ -12,7 +12,7 @@ jobs:
           echo  ${##*/${{ github.repository }} } '----项目-'
           echo $(basename ${{ github.repository }}) ${{ env.project_type }} '----项目2-'
       - name: 判断怎么发布
-        if: ${{ startsWith($(basename ${{ github.repository }}), ${{ env.project_type }}) }}
+        if: ${{ startsWith( $(basename ${{ github.repository }}), ${{ env.project_type }} ) }}
         run: 
           echo '发布test_ations'  
          
