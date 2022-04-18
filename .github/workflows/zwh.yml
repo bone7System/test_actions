@@ -11,10 +11,11 @@ jobs:
         run: |
           echo  ${##*/${{ github.repository }} } '----项目-'
           echo $(basename ${{ github.repository }}) ${{ env.project_type }} '----项目2-'
+          echo to=$(basename ${{ github.repository }}) >> $GITHUB_ENV
       - name: 判断怎么发布
-        if: ${{ $(basename  github.repository )  == 'bone7System/test_actions' }}
+        if: ${{ env.to == 'bone7System/test_actions' }}
         run: 
-          echo '发布test_ations'  
+          echo '发布test_ations' '|'  env.to '|' 
          
       - name: Dump GitHub context
         id: github_context_step
