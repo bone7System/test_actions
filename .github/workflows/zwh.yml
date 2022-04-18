@@ -11,7 +11,7 @@ jobs:
         run: |
           echo  ${##*/${{ github.repository }} } '----项目-'
           echo $(basename ${{ github.repository }}) ${{ env.project_type }} '----项目2-'
-      - name: project name
+      - name: 判断怎么发布
         if: ( startsWith('Hello world', 'dddddddHe') )
         run: |
           echo '发布test_ations'  
