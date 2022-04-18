@@ -14,7 +14,7 @@ jobs:
       - name: 判断怎么发布
         if: ${{ startsWith(env.to , env.project_type ) }}
         env:
-          project_type: test_actions
+          project_type: test_actions1
         run: 
           echo '发布test_ations' '|'  ${{ env.to }} '|' 
          
