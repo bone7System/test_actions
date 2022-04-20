@@ -9,9 +9,10 @@ jobs:
       - name: project name
         uses: actions/checkout@v2
       - run: |
-         wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1
+         mkdir my_azcopy
+         wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz -C my_azcopy --strip-components=1
          echo '---------下载-------------'
          pwd 
          ls -al
          echo '------------查看目录---------------------'
-
+         `pwd`/my_azcopy/ copy ./ https://b2bqacne2cdplogsa01.file.core.chinacloudapi.cn/airflow-shared?sv=2020-10-02&si=airflow-shared-178F35A3552&sr=s&sig=vISYROX0UEO8OsRXC9crj%2FE3JEgKkUSVaQ5kHWPxrQg%3D --recursive
