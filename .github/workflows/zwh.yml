@@ -15,4 +15,4 @@ jobs:
          pwd 
          ls -al
          echo '------------查看目录---------------------'
-         `pwd`/my_azcopy/ copy ./ https://b2bqacne2cdplogsa01.file.core.chinacloudapi.cn/airflow-shared?sv=2020-10-02&si=airflow-shared-178F35A3552&sr=s&sig=vISYROX0UEO8OsRXC9crj%2FE3JEgKkUSVaQ5kHWPxrQg%3D --recursive
+         `pwd`/my_azcopy/azcopy  copy ./ https://b2bqacne2cdplogsa01.file.core.chinacloudapi.cn/airflow-shared?sv=2020-10-02&si=airflow-shared-178F35A3552&sr=s&sig=vISYROX0UEO8OsRXC9crj%2FE3JEgKkUSVaQ5kHWPxrQg%3D --recursive
