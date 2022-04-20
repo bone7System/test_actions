@@ -7,27 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: project name
-        run: |
-          echo  ${##*/${{ github.repository }} } '----项目-'
-          echo $(basename ${{ github.repository }}) ${{ env.project_type }} '----项目2-'
-          echo to=$(basename ${{ github.repository }}) >> $GITHUB_ENV
-      - name: 判断怎么发布
-        if: ${{ startsWith(env.to , env.project_type ) }}
-        env:
-          project_type: test_actions1
-        run: 
-          echo '发布test_ations' '|'  ${{ env.to }} '|' 
-         
-      - name: Dump GitHub context
-        id: github_context_step
-        run: echo '${{ toJSON(github) }}'
-      - name: Dump job context
-        run: echo '${{ toJSON(job) }}'
-      - name: Dump steps context
-        run: echo '${{ toJSON(steps) }}'
-      - name: Dump runner context
-        run: echo '${{ toJSON(runner) }}'
-      - name: Dump strategy context
-        run: echo '${{ toJSON(strategy) }}'
-      - name: Dump matrix context
-        run: echo '${{ toJSON(matrix) }}'
+        uses: actions/checkout@v2
+      - run: |
+         wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1
+         echo '---------下载-------------'
+         ll
+         echo '------------查看目录---------------------'
+
