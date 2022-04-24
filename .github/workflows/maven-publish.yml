@@ -1,35 +1,14 @@
-on: push
-name: Main Workflow
+name: 'Dependency Review'
+on: [pull_request]
+
+permissions:
+  contents: read
+
 jobs:
-  sonarQube:
-    name: SonarQube Trigger
+  dependency-review:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: SonarQube Scan
-      uses: kitabisa/sonarqube-action@master
-      with:
-        host: ${{ secrets.SONARQUBE_HOST }}
-        login: ${{ secrets.SONARQUBE_TOKEN }}
-    - name: success
-      run: echo '代码质量检查完成     '
-  gitGuardian:
-   name: GitGuardian scan
-   runs-on: ubuntu-latest
-   steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0 # fetch all history so multiple commits can be scanned
-    - name: GitGuardian scan
-      uses: GitGuardian/ggshield-action@master
-      env:
-        GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
-        GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}
-        GITHUB_PULL_BASE_SHA: ${{ github.event.pull_request.base.sha }}
-        GITHUB_DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
-        GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
-    - name: success
-      run: echo '代码安全检查完成'
-      
-      
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v3
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v1
