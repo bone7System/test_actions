@@ -7,3 +7,4 @@ jobs:
     uses: bone7System/test_actions/.github/workflows/sub_workflow.yml@main
     with:
       release_type: 'xxxxx'
+      token: 'abc'
