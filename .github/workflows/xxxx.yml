@@ -1,0 +1,9 @@
+name: xxxx
+on: 
+  workflow_dispatch:
+
+jobs:
+  call-sub-workflow:
+    uses: bone7System/test_actions/.github/workflows/sub-workflow.yml@main
+    with:
+      release_type: '这是测试的参数'
