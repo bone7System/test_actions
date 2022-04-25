@@ -13,4 +13,4 @@ jobs:
     steps:
       - name: Print Inputs
         run: |
-          echo "Release Type: ${{ github.event.inputs }}"
+          echo "Release Type: ${{ inputs.release_type }}"
