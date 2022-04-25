@@ -1,14 +1,14 @@
 name: Sub Workflow
 
-on: 
+on:
   workflow_call:
     inputs:
-      release_type:
-        type: string
+      username:
         required: true
+        type: string
     secrets:
-        token:
-          required: false      
+      token:
+        required: true  
  
 jobs:
   my-job:
@@ -16,5 +16,5 @@ jobs:
     steps:
       - name: Print Inputs
         run: |
-          echo "Release Type: ${{ inputs.release_type }}"
+          echo "Release Type: ${{ inputs.username }}"
           echo "token is ${{secrets.token}}"
