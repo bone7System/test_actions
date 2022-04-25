@@ -4,6 +4,6 @@ on:
 
 jobs:
   call-sub-workflow:
-    uses: bone7System/test_actions/.github/workflows/sub-workflow.yml@main
+    uses: bone7System/test_actions/.github/workflows/sub_workflow.yml@main
     with:
       release_type: '这是测试的参数'
