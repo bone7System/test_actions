@@ -1,10 +1,9 @@
 name: xxxx
 on: 
-  workflow_dispatch:
+  push:
 
 jobs:
   call-sub-workflow:
     uses: bone7System/test_actions/.github/workflows/sub_workflow.yml@main
     with:
       release_type: 'xxxxx'
-      token: 'oiiiii'
