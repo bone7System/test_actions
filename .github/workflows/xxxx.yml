@@ -6,4 +6,4 @@ jobs:
   call-sub-workflow:
     uses: bone7System/test_actions/.github/workflows/sub_workflow.yml@main
     with:
-      release_type: '123456'
+      release_type: ${{secrets.GITGUARDIAN_API_KEY}}
