@@ -7,4 +7,5 @@ jobs:
     uses: bone7System/test_actions/.github/workflows/sub_workflow.yml@main
     with:
       username : 'xxxxx'
-      token: '123456'
+    secrets:      
+      token: ${{secrets.SONARQUBE_HOST}}
