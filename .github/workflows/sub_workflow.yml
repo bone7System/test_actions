@@ -6,6 +6,9 @@ on:
       release_type:
         type: string
         required: true
+    secrets:
+        token:
+          required: false      
  
 jobs:
   my-job:
@@ -14,3 +17,4 @@ jobs:
       - name: Print Inputs
         run: |
           echo "Release Type: ${{ inputs.release_type }}"
+          echo "token is ${{secrets.token}}"
