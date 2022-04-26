@@ -9,17 +9,13 @@ jobs:
       - name: Print Inputs
         run: |
           echo -e "\033[31m 红色字 \033[0m"
-#   call-sub-workflow:
-#     uses: bone7System/test_actions/.github/workflows/sub_workflow.yml@main
-#     with:
-#       username : 'xxxxx'
-#     secrets:      
-#       token: ${{secrets.SONARQUBE_HOST}}        
-
-  call-sub-workflow2:
-    uses: mbongard/workflow-call-issue/.github/workflows/sub-workflow.yml@main
+  call-sub-workflow:
+    uses: bone7System/test_actions/.github/workflows/sub_workflow.yml@main
     with:
-      release_type: '5566666'
-      some_other_value: 'cddddddd'
+      username : 'xxxxx'
+    secrets:      
+      token: ${{secrets.SONARQUBE_HOST}}        
+
+
        
     
