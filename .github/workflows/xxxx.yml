@@ -16,5 +16,9 @@ jobs:
     secrets:      
       token: ${{secrets.SONARQUBE_HOST}}        
 
+  call-sub-workflow2:
+    uses: mbongard/workflow-call-issue/.github/workflows/sub-workflow.yml@main
+    with:
+      release_type: '5566666'
        
     
