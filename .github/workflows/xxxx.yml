@@ -20,6 +20,6 @@ jobs:
     uses: mbongard/workflow-call-issue/.github/workflows/sub-workflow.yml@main
     with:
       release_type: '5566666'
-      some_other_value: 'cddddd'
+      some_other_value: 'cddddddd'
        
     
