@@ -16,5 +16,7 @@ jobs:
     steps:
       - name: Print Inputs
         run: |
+          pwd
+          ls -al
           echo "Release Type: ${{ inputs.username }}"
           echo "token is ${{secrets.token}}"
