@@ -9,6 +9,8 @@ on:
     secrets:
       token:
         required: true  
+env:
+ uname: ${{ inputs.username }}"
  
 jobs:
   my-job:
@@ -18,5 +20,6 @@ jobs:
         run: |
           pwd
           ls -al
+          echo '传入参数变成环境变量${{env.uname}}'
           echo "Release Type: ${{ inputs.username }}"
           echo "token is ${{secrets.token}}"
