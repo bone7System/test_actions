@@ -1,36 +1,51 @@
-name: xxxx
-on: 
-  push:
+# name: xxxx
+# on: 
+#   push:
+
+# jobs:
+#   my-job:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Print Inputs
+#         id: a
+#         run: |
+#           java -version
+#           echo -e "\033[31m 红色字 \033[0m"
+#           echo project_name=$(basename ${{ github.repository }}) >> $GITHUB_ENV
+#           echo $project_name
+#   call-sub-workflow:
+#     uses: bone7System/test_actions/.github/workflows/sub_workflow.yml@main
+#     with:
+#       username : 'xxxxx'
+#     secrets:      
+#       token: ${{secrets.SONARQUBE_HOST}}
+
+name: Context testing
+on: push
+
+env:
+ myname: abc123
 
 jobs:
-  my-job:
+  dump_contexts_to_log:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Inputs
-        id: a
-        run: |
-          java -version
-          echo -e "\033[31m 红色字 \033[0m"
-          echo project_name=$(basename ${{ github.repository }}) >> $GITHUB_ENV
-          echo $project_name
-  job2:
-    runs-on: ubuntu-latest
-    needs: [ my-job ]
-    steps:
-      - name: Print Inputs
-        id: a
-        run: |
-          echo '::set-output name=SELECTED_COLOR::green'
-      - name: job2
-        run: |
-           echo ${{job2.steps.a.outputs.SELECTED_COLOR}}
-           echo ${{env.project_name}}
-  call-sub-workflow:
-    uses: bone7System/test_actions/.github/workflows/sub_workflow.yml@main
-    with:
-      username : 'xxxxx'
-    secrets:      
-      token: ${{secrets.SONARQUBE_HOST}}        
+      - name: Dump GitHub context
+        id: github_context_step
+        run: echo '${{ toJSON(github) }}'
+      - name: Dump job context
+        run: echo '${{ toJSON(job) }}'
+      - name: Dump steps context
+        run: echo '${{ toJSON(steps) }}'
+      - name: Dump runner context
+        run: echo '${{ toJSON(runner) }}'
+      - name: Dump strategy context
+        run: echo '${{ toJSON(strategy) }}'
+      - name: Dump matrix context
+        run: echo '${{ toJSON(matrix) }}'
+
+
+
 
 
        
