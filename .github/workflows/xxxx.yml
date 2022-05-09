@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: job2
         run: |
-           echo ${{my-job.a.outputs.action_fruit}}
+           echo ${{my-job.steps.a.outputs.action_fruit}}
            echo ${{env.project_name}}
   call-sub-workflow:
     uses: bone7System/test_actions/.github/workflows/sub_workflow.yml@main
