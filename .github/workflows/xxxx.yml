@@ -34,13 +34,13 @@ jobs:
         id: step1
         run: | 
           echo ${{ env.myname }}
-          echo "::set-output name=project_name::hello"
+         # echo "::set-output name=project_name::hello"
     outputs:
      project_name: airflow
    
     
   job2:
-   if: ${{ needs.job1.outputs.project_name == 'airflow' }}
+   if: ${{ needs.job1.outputs.project_name == 'airflow2' }}
    runs-on: ubuntu-latest
    needs: job1
    steps:
