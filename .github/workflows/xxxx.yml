@@ -17,9 +17,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ my-job ]
     steps:
+      - name: Print Inputs
+        id: a
+        run: |
+          echo '::set-output name=SELECTED_COLOR::green'
       - name: job2
         run: |
-           echo ${{my-job.steps.a.outputs.action_fruit}}
+           echo ${{steps.a.outputs.SELECTED_COLOR}}
            echo ${{env.project_name}}
   call-sub-workflow:
     uses: bone7System/test_actions/.github/workflows/sub_workflow.yml@main
