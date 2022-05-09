@@ -13,7 +13,7 @@ jobs:
           echo -e "\033[31m 红色字 \033[0m"
           echo project_name=$(basename ${{ github.repository }}) >> $GITHUB_ENV
           echo $project_name
-  my-job2:
+  job2:
     runs-on: ubuntu-latest
     needs: [ my-job ]
     steps:
@@ -23,7 +23,7 @@ jobs:
           echo '::set-output name=SELECTED_COLOR::green'
       - name: job2
         run: |
-           echo ${{steps.a.outputs.SELECTED_COLOR}}
+           echo ${{job2.steps.a.outputs.SELECTED_COLOR}}
            echo ${{env.project_name}}
   call-sub-workflow:
     uses: bone7System/test_actions/.github/workflows/sub_workflow.yml@main
