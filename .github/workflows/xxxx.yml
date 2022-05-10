@@ -58,7 +58,7 @@ jobs:
            echo 1233
              string='${{ github.event.head_commit.message }}'
            array=(${string//\n/ })  
- 
+           echo "array[0]=${array[0]}"
            for var in ${array[@]}
             do
                echo $var
