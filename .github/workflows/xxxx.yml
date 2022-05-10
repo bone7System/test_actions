@@ -56,7 +56,8 @@ jobs:
         id: github_context_step
         run: | 
            #echo '${{ toJSON(github) }}'
-           echo ${{ github.event.head_commit.message }}
+           #echo ${{ github.event.head_commit.message }}
+           echo  "${{ github.sha }}"
       - name: Dump job context
         run: echo '${{ toJSON(job) }}'
       - name: Dump steps context
