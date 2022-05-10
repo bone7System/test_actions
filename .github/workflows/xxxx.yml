@@ -61,13 +61,14 @@ jobs:
             echo '--------------------------------'
             echo $commit_message
             echo '--------------------------------'
-            title="${commit_message%\n\n*}"
+            title="${commit_message% *}"
              echo '################################# '
              echo "title:$title"
-             tag_version="v2222_${title}_$(date '+%Y%m%d%H%M%S')"
-
              echo '################################# '
-             echo "$tag_version"
+                echo '--------------------------------'
+             echo '################################# '
+              tag_version="v2222_${title}_$(date '+%Y%m%d%H%M%S')"
+              echo "$tag_version"
               echo '#################################'
            echo  "${{ github.sha }}"
 
