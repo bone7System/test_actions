@@ -61,7 +61,7 @@ jobs:
             title="${commit_message%\n\n*}"
              echo '################################# '
              echo "title:$title"
-            export tag_version="v_$title_$(date '+%Y%m%d%H%M%S')"
+             tag_version="v_$title_$(date '+%Y%m%d%H%M%S')"
 
              echo '################################# '
              echo "$tag_version"
