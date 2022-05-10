@@ -56,13 +56,13 @@ jobs:
         id: github_context_step
         run: |
            echo 1233
-           echo -e "${{ github.event.head_commit.message }}"
-            commit_message="${{ github.event.head_commit.message }}"
+           echo -e '${{ github.event.head_commit.message }}'
+            commit_message='${{ github.event.head_commit.message }}'
             echo '--------------------------------'
             echo $commit_message
             echo '--------------------------------'
             title="${commit_message% *}"
-             echo '#################################￥ '
+             echo '#################################￥  '
              echo "title:$title"
              echo '################################# '
                 echo '--------------------------------'
