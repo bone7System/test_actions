@@ -26,28 +26,45 @@ on: push
 env:
  myname: 123
 
+# jobs:
+#   job1:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Dump GitHub context
+#         id: step1
+#         run: | 
+#           echo ${{ env.myname }}
+#          # echo "::set-output name=project_name::hello"
+#     outputs:
+#      project_name: airflow
+   
+    
+#   job2:
+#    if: ${{ needs.job1.outputs.project_name == 'airflow2' }}
+#    runs-on: ubuntu-latest
+#    needs: job1
+#    steps:
+#      - name: Dump GitHub context
+#        id: j1
+#        run: echo ${{ env.myname }}     
+
 jobs:
-  job1:
+  dump_contexts_to_log:
     runs-on: ubuntu-latest
     steps:
       - name: Dump GitHub context
-        id: step1
-        run: | 
-          echo ${{ env.myname }}
-         # echo "::set-output name=project_name::hello"
-    outputs:
-     project_name: airflow
-   
-    
-  job2:
-   if: ${{ needs.job1.outputs.project_name == 'airflow2' }}
-   runs-on: ubuntu-latest
-   needs: job1
-   steps:
-     - name: Dump GitHub context
-       id: j1
-       run: echo ${{ env.myname }}     
-
+        id: github_context_step
+        run: echo '${{ toJSON(github) }}'
+      - name: Dump job context
+        run: echo '${{ toJSON(job) }}'
+      - name: Dump steps context
+        run: echo '${{ toJSON(steps) }}'
+      - name: Dump runner context
+        run: echo '${{ toJSON(runner) }}'
+      - name: Dump strategy context
+        run: echo '${{ toJSON(strategy) }}'
+      - name: Dump matrix context
+        run: echo '${{ toJSON(matrix) }}'
      
 
 
