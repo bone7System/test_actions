@@ -56,7 +56,16 @@ jobs:
         id: github_context_step
         run: |
            echo 1233
+             string='${{ github.event.head_commit.message }}'
+           array=(${string//\n/ })  
+ 
+           for var in ${array[@]}
+            do
+               echo $var
+            done
+           echo 'end'
            echo -e '${{ github.event.head_commit.message }}'
+           
             commit_message='${{ github.event.head_commit.message }}'
             echo '--------------------------------'
             echo $commit_message
