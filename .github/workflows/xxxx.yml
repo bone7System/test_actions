@@ -62,7 +62,7 @@ jobs:
             export tag_version="v_$title_$(date '+%Y%m%d%H%M%S')"
             echo "$commit_message"
              echo "$title"
-             echo '#################################'
+             echo '################################# '
              echo "$tag_version"
               echo '#################################'
            echo  "${{ github.sha }}"
