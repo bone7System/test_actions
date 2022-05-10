@@ -56,9 +56,6 @@ jobs:
         id: github_context_step
         run: |
            echo 123
-           #echo '${{ toJSON(github) }}'
-           #echo ${{ github.event.head_commit.message }}
-           #echo  "${{ github.sha }}"
      
 
 
