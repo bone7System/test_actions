@@ -8,7 +8,7 @@
 #     steps:
 #       - name: Print Inputs
 #         id: a
-#         run: |
+#         run: | 
 #           java -version
 #           echo -e "\033[31m 红色字 \033[0m"
 #           echo project_name=$(basename ${{ github.repository }}) >> $GITHUB_ENV
