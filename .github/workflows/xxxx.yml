@@ -57,7 +57,9 @@ jobs:
         run: |
            echo 1233
            echo "${{ github.event.head_commit.message }}"
-            commit_message="${{ github.event.head_commit.message }}"
+            commit_message=${{ github.event.head_commit.message }}
+            echo $commit_message
+            echo '--------------------------------'
             title="${commit_message%\n\n*}"
              echo '################################# '
              echo "title:$title"
