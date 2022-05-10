@@ -61,7 +61,7 @@ jobs:
             echo '--------------------------------'
             echo $commit_message
             echo '--------------------------------'
-            title="${commit_message% *}"
+            title="${commit_message%\n\n*}"
              echo '#################################￥  '
              echo "title:$title"
              echo '################################# '
