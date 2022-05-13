@@ -81,32 +81,43 @@
 #               echo '#################################'
 #            echo  "${{ github.sha }}"
 
-on: issue_comment
+# on: issue_comment
 
+# jobs:
+#   pr_commented:
+#     # This job only runs for pull request comments
+#     name: PR comment
+#     if: ${{ github.event.issue.pull_request }}
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: |
+#           echo A comment on PR $NUMBER
+#         env:
+#           NUMBER: ${{ github.event.issue.number }}
+
+#   issue_commented:
+#     # This job only runs for issue comments
+#     name: Issue comment
+#     if: ${{ !github.event.issue.pull_request }}
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: |
+#           echo A comment on issue $NUMBER
+#         env:
+#           NUMBER: ${{ github.event.issue.number }}
+
+
+
+on:
+  push:
+    paths:
+      - '**.js'
 jobs:
-  pr_commented:
-    # This job only runs for pull request comments
-    name: PR comment
-    if: ${{ github.event.issue.pull_request }}
+  dump_contexts_to_log:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo A comment on PR $NUMBER
-        env:
-          NUMBER: ${{ github.event.issue.number }}
+      - name: Dump GitHub context
+        id: github_context_step
+        run: |
+           echo 'js  更高'
 
-  issue_commented:
-    # This job only runs for issue comments
-    name: Issue comment
-    if: ${{ !github.event.issue.pull_request }}
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo A comment on issue $NUMBER
-        env:
-          NUMBER: ${{ github.event.issue.number }}
-
-
-
-       
-    
