@@ -20,11 +20,11 @@
 #     secrets:      
 #       token: ${{secrets.SONARQUBE_HOST}}
 
-name: Context testing
-on: push
+# name: Context testing
+# on: push
 
-env:
- myname: 123
+# env:
+#  myname: 123
 
 # jobs:
 #   job1:
@@ -48,40 +48,63 @@ env:
 #        id: j1
 #        run: echo ${{ env.myname }}     
 
+# jobs:
+#   dump_contexts_to_log:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Dump GitHub context
+#         id: github_context_step
+#         run: |
+#            echo 1233
+#              string='${{ github.event.head_commit.message }}'
+#            array=(${string//\n/ })  
+#            echo "array[0]=${array[0]}"
+#            for var in ${array[@]}
+#             do
+#                echo $var
+#             done
+#            echo 'end'
+#            echo -e '${{ github.event.head_commit.message }}'
+           
+#             commit_message='${{ github.event.head_commit.message }}'
+#             echo '--------------------------------'
+#             echo $commit_message
+#             echo '--------------------------------'
+#             title="${commit_message%\n\n*}"
+#              echo '#################################￥  '
+#              echo "title:$title"
+#              echo '################################# '
+#                 echo '--------------------------------'
+#              echo '################################# '
+#               tag_version="v2222_${title}_$(date '+%Y%m%d%H%M%S')"
+#               echo "$tag_version"
+#               echo '#################################'
+#            echo  "${{ github.sha }}"
+
+on: issue_comment
+
 jobs:
-  dump_contexts_to_log:
+  pr_commented:
+    # This job only runs for pull request comments
+    name: PR comment
+    if: ${{ github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     steps:
-      - name: Dump GitHub context
-        id: github_context_step
-        run: |
-           echo 1233
-             string='${{ github.event.head_commit.message }}'
-           array=(${string//\n/ })  
-           echo "array[0]=${array[0]}"
-           for var in ${array[@]}
-            do
-               echo $var
-            done
-           echo 'end'
-           echo -e '${{ github.event.head_commit.message }}'
-           
-            commit_message='${{ github.event.head_commit.message }}'
-            echo '--------------------------------'
-            echo $commit_message
-            echo '--------------------------------'
-            title="${commit_message%\n\n*}"
-             echo '#################################￥  '
-             echo "title:$title"
-             echo '################################# '
-                echo '--------------------------------'
-             echo '################################# '
-              tag_version="v2222_${title}_$(date '+%Y%m%d%H%M%S')"
-              echo "$tag_version"
-              echo '#################################'
-           echo  "${{ github.sha }}"
+      - run: |
+          echo A comment on PR $NUMBER
+        env:
+          NUMBER: ${{ github.event.issue.number }}
 
-
+  issue_commented:
+    # This job only runs for issue comments
+    name: Issue comment
+    if: ${{ !github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo A comment on issue $NUMBER
+        env:
+          NUMBER: ${{ github.event.issue.number }}
 
 
 
