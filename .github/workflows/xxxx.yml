@@ -111,7 +111,7 @@
 on:
   push:
     paths:
-      - '**.js'
+      - 'test/**'
 jobs:
   dump_contexts_to_log:
     runs-on: ubuntu-latest
