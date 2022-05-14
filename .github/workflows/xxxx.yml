@@ -126,6 +126,7 @@ jobs:
       - name: Dump GitHub context
         id: github_context_step
         run: |
+            echo -e '${{ github.event.head_commit.message }}'
             echo 'cat test.txt'
             cat test.txt
 
