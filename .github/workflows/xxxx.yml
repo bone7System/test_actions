@@ -120,4 +120,5 @@ jobs:
         id: github_context_step
         run: |
            echo 'js  更高'
+           echo -e '${{ github.event.head_commit.message }}'
 
