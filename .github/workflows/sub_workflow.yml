@@ -19,7 +19,8 @@ jobs:
       - name: Print Inputs
         run: |
           echo '调用build.sh'
-          ./.github/scripts/build.sh
+           echo '${{github.workspace}}'
+             #/.github/workflows/scripts/build.sh
           pwd
           ls -al
            
