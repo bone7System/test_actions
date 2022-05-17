@@ -91,6 +91,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
+          echo '${{ toJSON(github.event) }}'
           echo A comment on PR $NUMBER
         env:
           NUMBER: ${{ github.event.issue.number }}
