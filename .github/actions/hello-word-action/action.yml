@@ -8,13 +8,19 @@ runs:
   using: "composite"
   steps:
     #- run: $GITHUB_ACTION_PATH/script/test.sh 
-    - run: |
+    - id: test_step1  
+      run: |
              echo "username:${{inputs.username}}"
              echo "cat 1.txt"
              cat $GITHUB_ACTION_PATH/1.txt
+             echo "::set-output name=test_name::456789"
       shell: bash
 inputs:
   username:
     description: user_name
     required: false
     default: "张三"
+outputs:
+  my_output_name:
+    description: "Random number"
+    value: ${{ steps.test_step1.outputs.test_name }}
