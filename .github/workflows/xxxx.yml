@@ -153,21 +153,19 @@
 #            run: echo '${{ toJSON(matrix) }}'
 
 
-name: dependabot validate
-
-on:
-  push:
-  
+name: Dependabot Pull Request
+on: 
+ push:
+ 
 jobs:
-  validate:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: marocchino/validate-dependabot@v1
-        id: validate
-      - uses: marocchino/sticky-pull-request-comment@v2
-        if: always()
-        with:
-          header: validate-dependabot
-          message: ${{ steps.validate.outputs.markdown }}
+    - name: Fetch Dependabot metadata
+      id: dependabot-metadata
+      uses: dependabot/fetch-metadata@v1.3.1
+      with:
+        alert-lookup: true
+        compat-lookup: true
+        github-token: "${{ github.token }}"
 
