@@ -14,13 +14,13 @@ jobs:
       - uses: actions/checkout@v2
         with:
          fetch-depth: 0    
-      - uses:  ./.github/actions/hello-word-action
-        with:
-         username : 'xxxx草草草草x'      
+#       - uses:  ./.github/actions/hello-word-action
+#         with:
+#          username : 'xxxx草草草草x'      
   call-sub-workflow:
     uses: bone7System/test_actions/.github/workflows/sub_workflow.yml@main
     with:
-      username : 'kkkkk'
+      username : 'hjkl'
     secrets:      
       token: 'rrrrrr'    
       
