@@ -17,7 +17,13 @@ jobs:
       - uses:  ./.github/actions/hello-word-action
         with:
          username : 'xxxx草草草草x'      
-
+  call-sub-workflow:
+    uses: bone7System/test_actions/.github/workflows/sub_workflow.yml@main
+    with:
+      username : 'kkkkk'
+    secrets:      
+      token: 'rrrrrr'    
+      
 # name: Context testing
 # on: push
 
