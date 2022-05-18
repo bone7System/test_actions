@@ -10,7 +10,7 @@ on:
       token:
         required: true  
 env:
- uname: ${{ inputs.username }}"
+ uname: ${{ inputs.username }}
  
 jobs:
   my-job:
@@ -24,6 +24,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
          fetch-depth: 0    
-      - uses:  ./.github/actions/hello-word-action
+      - uses:  bone7System/test_actions/.github/actions/hello-word-action@main
         with:
-         username : 'xxxx草草草草x'        
+         username : "${{ inputs.username }}"        
