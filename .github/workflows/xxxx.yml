@@ -11,9 +11,6 @@ jobs:
         run: |  
           java -version
           echo -e "\033[31m 红色字 \033[0m"
-          cd ..
-          ls -al
-          cat /home/runner/work/test_actions/test_actions/.github/actions/hello-word-action/action.yml     
       - uses:  bone7System/test_actions/.github/actions/hello-word-action@main
         with:
          username : 'xxxx草草草草x'      
