@@ -13,7 +13,7 @@ jobs:
           echo -e "\033[31m 红色字 \033[0m"
           echo project_name=$(basename ${{ github.repository }}) >> $GITHUB_ENV
           echo $project_name
-      - uses: ./sub_workflow
+      - uses: ./github/workflows/sub_workflow@main
         with:
          username : 'xxxx草草草草x'      
          token: ${{secrets.SONARQUBE_HOST}}
