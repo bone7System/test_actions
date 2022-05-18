@@ -17,13 +17,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print Inputs
-        run: |
-          echo '调用build.sh'
-           echo '${{github.workspace}}'
-             #/.github/workflows/scripts/build.sh
-          pwd
-          ls -al
-           
-          echo '传入参数变成环境变量${{env.uname}}'
-          echo "Release Type: ${{ inputs.username }}"
-          echo "token is ${{secrets.token}}"
+        run: 
+           echo '${{github.workspace}}'           
+           echo '传入参数变成环境变量${{env.uname}}'
+           echo "token is ${{secrets.token}}"
+      - uses: actions/checkout@v2
+        with:
+         fetch-depth: 0    
+      - uses:  ./.github/actions/hello-word-action
+        with:
+         username : 'xxxx草草草草x'        
