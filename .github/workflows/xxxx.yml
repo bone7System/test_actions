@@ -1,26 +1,26 @@
-name: xxxx
-on: 
-  push:
+# name: xxxx
+# on: 
+#   push:
 
-jobs:
-  my-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print Inputs
-        id: a 
-        run: |  
-          java -version
-          echo -e "\033[31m 红色字 \033[0m"
-      - uses: actions/checkout@v2
-        with:
-         fetch-depth: 0    
-      - uses:  ./.github/actions/hello-word-action
-        id: abc
-        with:
-         username : 'xxxx草草草草x'
-      - name: shuchu 
-        run: |
-              echo "输出内容：${{steps.abc.outputs.my_output_name}}"
+# jobs:
+#   my-job:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Print Inputs
+#         id: a 
+#         run: |  
+#           java -version
+#           echo -e "\033[31m 红色字 \033[0m"
+#       - uses: actions/checkout@v2
+#         with:
+#          fetch-depth: 0    
+#       - uses:  ./.github/actions/hello-word-action
+#         id: abc
+#         with:
+#          username : 'xxxx草草草草x'
+#       - name: shuchu 
+#         run: |
+#               echo "输出内容：${{steps.abc.outputs.my_output_name}}"
         
 #   call-sub-workflow:
 #     uses: bone7System/test_actions/.github/workflows/sub_workflow.yml@main
@@ -152,4 +152,22 @@ jobs:
 #          - name: Dump matrix context
 #            run: echo '${{ toJSON(matrix) }}'
 
+
+name: dependabot validate
+
+on:
+  push:
+  
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: marocchino/validate-dependabot@v1
+        id: validate
+      - uses: marocchino/sticky-pull-request-comment@v2
+        if: always()
+        with:
+          header: validate-dependabot
+          message: ${{ steps.validate.outputs.markdown }}
 
