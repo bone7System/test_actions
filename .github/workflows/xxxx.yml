@@ -155,17 +155,12 @@
 
 name: Dependabot Pull Request
 
-on: pull_request_target
+on: push
  
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Fetch Dependabot metadata
-      id: dependabot-metadata
-      uses: dependabot/fetch-metadata@v1.3.1
-      with:
-        alert-lookup: true
-        compat-lookup: true
-        github-token: "${{ github.token }}"
+         - name: Dump GitHub context
+           run: echo '${{ toJSON(github) }}'
 
