@@ -15,7 +15,7 @@
     <description>demo1</description>
     <properties>
         <java.version>11</java.version>
-              <mybatis-spring-boot.version>2.1.6</mybatis-spring-boot.version>
+              <mybatis-spring-boot.version>2.2.2</mybatis-spring-boot.version>
     </properties>
     <dependencies>
         <dependency>
