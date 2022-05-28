@@ -173,4 +173,4 @@ jobs:
              echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
               echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
                echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
-
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
