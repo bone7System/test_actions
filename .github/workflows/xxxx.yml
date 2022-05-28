@@ -157,15 +157,11 @@ name: Dependabot Pull Request
 
 on: push
 
-env:
- a: 1
- b: "${{env.a}}b"
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-         - name: Dump GitHub context
-           run: |
-              echo "env.b=${{env.b}}"
-              echo '${{ toJSON(github) }}'
+    - name: Adding markdown
+      run: echo '### Hello world! :rocket:' >> $GITHUB_STEP_SUMMARY
 
