@@ -155,9 +155,10 @@
 
 name: Dependabot Pull Request
 on:
-  label:
-    types:
-      - created
+  push:
+    paths:
+      - '**'
+
 
 jobs:
   build:
