@@ -155,9 +155,7 @@
 
 name: Dependabot Pull Request
 on:
-  push:
-    paths:
-      - '**'
+  create
 
 
 jobs:
