@@ -154,9 +154,10 @@
 
 
 name: Dependabot Pull Request
-
 on:
- fork:
+  label:
+    types:
+      - created
 
 jobs:
   build:
