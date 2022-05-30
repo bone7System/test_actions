@@ -153,7 +153,7 @@
 #            run: echo '${{ toJSON(matrix) }}'
 
 
-name: Dependabot Pull Request
+name:  create
 on:
   create
 
@@ -163,5 +163,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Adding markdown
-      run: echo '### Hello world ! :rocket:' >> $GITHUB_STEP_SUMMARY
+      run:  echo '${{ toJSON(github) }}'
 
