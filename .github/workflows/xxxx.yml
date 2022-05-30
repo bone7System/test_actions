@@ -156,8 +156,7 @@
 name: Dependabot Pull Request
 
 on:
- push:
- pull_request:
+ fork:
 
 jobs:
   build:
