@@ -168,7 +168,7 @@
 
 name:  create
 on:
-  create
+  push
 
 
 jobs:
@@ -176,5 +176,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Adding markdown
-      run:  echo '${{ toJSON(github) }}'
-
+      run:  echo '### Hello 1 ! :rocket:' >> $GITHUB_STEP_SUMMARY
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: deploy markdown
+      run:  echo '### Hello 2 ! :rocket:' >> $GITHUB_STEP_SUMMARY
