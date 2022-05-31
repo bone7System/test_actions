@@ -1,6 +1,6 @@
-name:  create
+name:  test
 on:
-  push
+  push:
 
 
 jobs:
