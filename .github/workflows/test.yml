@@ -10,7 +10,7 @@ jobs:
     - name: add
       run: |
         echo "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" >  mytoken.txt 
-        gh auth login --with-token < mytoken.txt 
+         gh auth login
         gh api \
           -H "Accept: application/vnd.github.v3+json" \
           /repos/OWNER/REPO/pulls
