@@ -153,11 +153,23 @@
 #            run: echo '${{ toJSON(matrix) }}'
 
 
-name: Dependabot Pull Request
+# name: Dependabot Pull Request
+# on:
+#   create
 
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Adding markdown
+#       run: echo '### Hello world ! :rocket:' >> $GITHUB_STEP_SUMMARY
+
+
+name:  create
 on:
- push:
- pull_request:
+  create
+
 
 jobs:
   build:
@@ -173,4 +185,5 @@ jobs:
              echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
               echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
                echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
-        echo "$HOME/.local/bin" >> $GITHUB_PATH
+        
+
