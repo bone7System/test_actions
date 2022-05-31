@@ -12,5 +12,5 @@ jobs:
        # echo "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" >  mytoken.txt 
     - uses: github-actions-up-and-running/pr-comment@v1.0.0
       with:
-        repo-token: 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
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
         message: Nice PR!👍
