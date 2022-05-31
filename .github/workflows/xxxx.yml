@@ -168,7 +168,7 @@
 
 name:  create
 on:
-  push
+  create
 
 
 jobs:
