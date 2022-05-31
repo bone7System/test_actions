@@ -13,5 +13,5 @@ jobs:
         curl  -X POST \
           -H "Accept: application/vnd.github.v3+json" \
           https://api.github.com/repos/bone7System/test_actions/issues \
-          -d '{"title":"Found a bug","body":"I'm having a problem with this."}'
+          -d '{"title":"Found a bug","body":"I m having a problem with this."}'
 
