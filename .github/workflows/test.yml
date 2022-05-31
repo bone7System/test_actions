@@ -9,4 +9,6 @@ jobs:
     steps:
     - name: add
       run: |
-        gh config
+        gh api \
+          -H "Accept: application/vnd.github.v3+json" \
+          /repos/OWNER/REPO/pulls
