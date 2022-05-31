@@ -10,6 +10,7 @@ jobs:
     - name: add
       run: |
        # echo "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" >  mytoken.txt 
+        curl -H "Authorization: token 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" https://api.github.com/api/v3
         curl  -X POST  -H "Accept: application/vnd.github.v3+json" \
           https://api.github.com/repos/bone7System/test_actions/issues \
           -d '{"title":"Found a bug","body":"I m having a problem with this.","assignees":["octocat"],"milestone":1,"labels":["bug"]}'
