@@ -166,19 +166,32 @@
 #       run: echo '### Hello world ! :rocket:' >> $GITHUB_STEP_SUMMARY
 
 
-name:  create
+# name:  create
+# on:
+#   create
+
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Adding markdown
+#       run:  echo '### Hello 1 ! :rocket:' >> $GITHUB_STEP_SUMMARY
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: deploy markdown
+#       run:  echo '### Hello 2 ! :rocket:' >> $GITHUB_STEP_SUMMARY
+
+name: test
+
 on:
-  create
-
-
+ push
+ 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-    - name: Adding markdown
-      run:  echo '### Hello 1 ! :rocket:' >> $GITHUB_STEP_SUMMARY
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: deploy markdown
-      run:  echo '### Hello 2 ! :rocket:' >> $GITHUB_STEP_SUMMARY
+    steps: 
+      - uses:  bone7System/test_actions/.github/actions/hello-word-action@main
+        with:
+         username : "${{ inputs.username }}"   
