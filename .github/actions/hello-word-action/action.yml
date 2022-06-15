@@ -11,6 +11,7 @@ runs:
     - id: test_step1  
       run: |
              echo "username:${{inputs.username}}"
+             echo "${{ toJSON(github) }}"
              echo "cat 1.txt"
              cat $GITHUB_ACTION_PATH/1.txt
              echo "::set-output name=test_name::456789"
