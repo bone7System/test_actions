@@ -194,4 +194,4 @@ jobs:
     steps: 
       - uses:  bone7System/test_actions/.github/actions/hello-word-action@main
         with:
-         username : "${{ inputs.username }}"   
+         username : zwg"   
