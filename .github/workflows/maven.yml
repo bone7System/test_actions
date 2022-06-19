@@ -24,16 +24,18 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml -Dmaven.test.skip=true 
-    - name: Run sshpass commands
+#     - name: Build with Maven
+#       run: mvn -B package --file pom.xml -Dmaven.test.skip=true 
+    - name: dddd
       uses: appleboy/ssh-action@master
       with:
-          host: 121.37.169.185
-          username: root
-          key: ${{ secrets.KEY }}
-          script: |
-                   ls /opt
+        host: 121.37.169.185
+        username: root
+        password: Zhuwenhao123456
+        port: 22
+        script: |
+           echo 123
+
     - name: deploy
       run: |
         ls -al
