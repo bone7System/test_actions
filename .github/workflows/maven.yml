@@ -32,3 +32,5 @@ jobs:
         ls -al
         echo "-----------------"
         ls target -al
+        echo "-----------------"
+        ssh root@49.234.45.229
