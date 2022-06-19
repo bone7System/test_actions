@@ -31,7 +31,7 @@ jobs:
       with:
         host: 121.37.169.185
         user: root
-        pass: Zhuwenhao123456
+        key: ${{ secrets.key }}
         run: |
            mkdir /opt/sshzwh
     - name: deploy
