@@ -26,6 +26,18 @@ jobs:
 
 #     - name: Build with Maven
 #       run: mvn -B package --file pom.xml -Dmaven.test.skip=true 
+    - name: test
+      run: |
+            mkdir test
+            echo "123" > test/1.txt
+    - name: Copy folder content recursively to remote
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        local: test
+        remote: /opt/ssh_mkdir
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.SSH_USER }}
+        password: ${{ secrets.PASSWORD }}
     - name: dddd
       uses: appleboy/ssh-action@master
       with:
@@ -35,7 +47,7 @@ jobs:
         port: 22
         script: |
            echo 123
-           mkdir /opt/ssh_mkdir
+           ls /opt -al
     - name: deploy
       run: |
         ls -al
