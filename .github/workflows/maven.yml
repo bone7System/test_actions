@@ -35,10 +35,9 @@ jobs:
         port: 22
         script: |
            echo 123
-
+           mkdir /opt/ssh_mkdir
     - name: deploy
       run: |
         ls -al
         echo "-----------------"
-        ls target -al
-        echo "-----------------"
+
