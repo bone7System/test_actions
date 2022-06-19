@@ -34,9 +34,9 @@ jobs:
       with:
         local: test
         remote: /opt/ssh_mkdir
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.SSH_USER }}
-        password: ${{ secrets.PASSWORD }}
+        host: 121.37.169.185
+        username: root
+        password: Zhuwenhao123456
     - name: dddd
       uses: appleboy/ssh-action@master
       with:
