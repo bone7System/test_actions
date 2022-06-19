@@ -33,8 +33,7 @@ jobs:
           username: root
           key: ${{ secrets.KEY }}
           script: |
-       
-            mkdir /opt/sshzwh
+                   ls /opt
     - name: deploy
       run: |
         ls -al
