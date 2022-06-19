@@ -31,7 +31,7 @@ jobs:
       with:
           host: 121.37.169.185
           username: root
-          key: ${{ secrets.key }}
+          key: ${{ secrets.KEY }}
           script: |
        
             mkdir /opt/sshzwh
