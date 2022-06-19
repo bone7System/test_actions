@@ -26,11 +26,17 @@ jobs:
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml -Dmaven.test.skip=true 
-
+    - name: Run sshpass commands
+      uses: matheusvanzan/sshpass-action@v2
+      with:
+        host: 121.37.169.185
+        user: root
+        pass: Zhuwenhao123456
+        run: |
+           mkdir /opt/sshzwh
     - name: deploy
       run: |
         ls -al
         echo "-----------------"
         ls target -al
         echo "-----------------"
-        ssh root@49.234.45.229
